@@ -111,11 +111,19 @@ alias vi=vim
 alias mk3drive="cd /run/media/sagen/Mk3Drive"
 alias mk3="cd /run/media/sagen/Mk3Drive"
 alias a="git add ."
+alias pull="git pull"
+alias push="git push"
+alias s="source "
+
+# Git add, commit and push
 cap() {
   git add .
   git commit -m "$1"
   git push origin
 }
+
+
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
