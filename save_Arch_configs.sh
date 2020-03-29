@@ -8,10 +8,13 @@ cp ~/install.sh Arch/
 cp ~/.gitignore Arch/
 cp ~/.gitconfig Arch/
 
+# To commit the files type for instance:
+# > cap "updated files"
 
-git status
-git add -A
-git commit -m "Updated dotfiles"
-git push
+# cap is the alias for
+# -  Commiting
+# -  Adding
+# -  Pushing
+
 
 
