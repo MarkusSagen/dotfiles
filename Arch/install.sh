@@ -27,7 +27,6 @@ chsh -s $(which zsh)
 git config --global user.name "MarkusSagen"
 git config --global user.email "markus.john.sagen@gmail.com"
 git config --global credential.helper store
-git config --global credential.helper cache
 
 
 # End of commands
