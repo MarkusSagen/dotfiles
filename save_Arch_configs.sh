@@ -10,7 +10,7 @@ cp ~/.gitconfig Arch/
 
 # To commit the files type for instance:
 # > cap "updated files"
-
+#
 # cap is the alias for
 # -  Commiting
 # -  Adding
