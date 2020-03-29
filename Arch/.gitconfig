@@ -1,7 +1,7 @@
 [user]
 	name = MarkusSagen
 	email = markus.john.sagen@gmail.com
-	username = markussagen
+	username = MarkusSagen
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -84,7 +84,7 @@
 	clgp = !sh -c 'git clone git@github.com:$1 $(basename $1)' -
 	clgu = !sh -c 'git clone git@github.com:$(git config --get user.username)/$1 $1' -
 	#############
-	cp = cherry-pick
+  cp = cherry-pick
 	cpa = cherry-pick --abort
 	cpc = cherry-pick --continue
 	#############
@@ -247,6 +247,7 @@
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 master' -
 	human = name-rev --name-only --refs=refs/heads/*
+	gap = git add . && git commit -m '' && git push origin
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

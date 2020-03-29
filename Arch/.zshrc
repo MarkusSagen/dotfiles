@@ -110,8 +110,12 @@ alias vim="sudo -E vim"
 alias vi=vim
 alias mk3drive="cd /run/media/sagen/Mk3Drive"
 alias mk3="cd /run/media/sagen/Mk3Drive"
-
-
+alias a="git add ."
+cap() {
+  git add .
+  git commit -m "$1"
+  git push origin
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
