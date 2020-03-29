@@ -23,6 +23,13 @@ chsh -s /bin/zsh root
 chsh -s /bin/zsh sagen
 chsh -s $(which zsh)
 
+# Set up so github wont ask for username and password
+git config --global user.name "MarkusSagen"
+git config --global user.email "markus.john.sagen@gmail.com"
+git config --global credential.helper store
+git config --global credential.helper cache
+
+
 # End of commands
 echo ''
 
