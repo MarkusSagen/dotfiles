@@ -1,11 +1,15 @@
 #!/bin/bash
 
 packman -Sy		# Initialize Packman
-Yes | pacman -S vim   # vim
-Yes | pacman -S git   # git
-Yes | pacman -S tmux  # tmux
-Yes | pacman -S code  # VS cpde
-Yes | pacman -S zsh   # Zsh shell
+pacman -S vim --noconfirm  # vim
+pacman -S git --noconfirm  # git
+pacman -S tmux --noconfirm # tmux
+pacman -S code --noconfirm # VS cpde
+pacman -S zsh  --noconfirm # Zsh shell
+pacman -S discord --noconfirm
+
+# Download Zoom.us
+wget https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
 
 echo ''
 # Install zsh syntax highlighting and auto complete
