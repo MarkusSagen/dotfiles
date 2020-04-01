@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Copy files from local changes and push to Github
-cp ~/.zshrc Arch/
-cp ~/.vimrc Arch/
-cp ~/.tmux.conf Arch/
-cp ~/install.sh Arch/
-cp ~/.gitignore Arch/
-cp ~/.gitconfig Arch/
+cp ~/.zshrc Arch/.zshrc
+cp ~/.vimrc Arch/.vimrc
+cp ~/.tmux.conf Arch/.tmux.conf
+cp ~/install.sh Arch/install.sh
+cp ~/.gitignore Arch/.gitignore
+cp ~/.gitconfig Arch/.gitconfig
 
 # To commit the files type for instance:
 # > cap "updated files"
