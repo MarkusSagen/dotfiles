@@ -151,6 +151,11 @@ nmap ++ <plug>NERDCommenterToggle
 " Mapping selecting mappings
 map ; :Files<CR>
 
+" Mapping Buffer
+map bf :ls
+
+
+
 
 
 " Highlight trailing white space
@@ -185,19 +190,19 @@ augroup project
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 
-" Allow for seaching in headerfiles when curser is on file
-" Press:  <C-W><C-F>
-let &path.="src/include,/usr/include/AL,"
-" Set make configure to a mapping
-set makeprg=make\ -C\ ../build\ -j9
-nnoremap <F4>
-" Map to run project after it is compiled
-nnoremap <F5> :!./project_name<cr>
-
-" Configure clang_complete
-" Set the library path directories to look for
-" let g:clang_library_path='/usr/lib/llvm-3.8/lib'
-" let g:clang_library_path='/usr/lib64/libclang.so.3.8'
+" " Allow for seaching in headerfiles when curser is on file
+" " Press:  <C-W><C-F>
+" let &path.="src/include,/usr/include/AL,"
+" " Set make configure to a mapping
+" set makeprg=make\ -C\ ../build\ -j9
+" nnoremap <F4>
+" " Map to run project after it is compiled
+" nnoremap <F5> :!./project_name<cr>
+"
+" " Configure clang_complete
+" " Set the library path directories to look for
+" " let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+" " let g:clang_library_path='/usr/lib64/libclang.so.3.8'
 
 
 
@@ -215,12 +220,32 @@ noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<C
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 
+" Mapping the buffer to short command
+"
+
+
 
 
 " ======================================
 " TagBar short commands
 " ======================================
 nmap <F8> :TagBarToggle<CR>     " Toggle TagBar window
+
+
+
+
+
+" ======================================
+" Window Splitting
+" ======================================
+" Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><CKK>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+
 
 
 
