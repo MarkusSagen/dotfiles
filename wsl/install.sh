@@ -98,3 +98,4 @@ sudo apt-get update && sudo apt-get install java-common
 sudo dpkg --install amazon-corretto-11-x64-linux-jdk.deb
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
+cp lombok.jar ~/.emacs.d/modules/lang/java/
