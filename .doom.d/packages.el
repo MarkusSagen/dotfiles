@@ -54,13 +54,33 @@
 (package! ascii-art-to-unicode)
 (package! deadgrep)
 (package! emojify)
-(package! org-brain)
-(package! company-org-roam
-  :recipe (:host github :repo "jethrokuan/company-org-roam"))
-(package! org-download)
-(package! org-drill)
+
+
+;; python
+(package! conda)
+(package! company-box)
+(package! ein) ;; jupyter notebook in emacs
+
+;; java
+(package! company-emoji)
+(package! company-lsp)
+(package! dap-mode)
+(package! idle-highlight)
+
+
+;; org
+(package! org-bullets)
 (package! org-journal)
 (package! org-fancy-priorities)
+(package! org-super-agenda)
+
+
+;; org roam
+(package! company-org-roam
+  :recipe (:host github :repo "jethrokuan/company-org-roam"))
+(package! org-brain)
+(package! org-download)
+(package! org-drill)         ;; spaced repetition
 (package! org-ref
   :recipe (:host github :repo "jkitchin/org-ref"))
 (package! org-roam
@@ -69,4 +89,3 @@
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (package! org-roam-server
     :recipe (:host github :repo "org-roam/org-roam-server"))
-(package! org-super-agenda)

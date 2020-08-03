@@ -55,21 +55,13 @@
 
 
 
-
-
-
-
 ;; Lanch in fullscreen
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 
 ;; Enable searches across all open windows, not just current one
 (setq avy-all-windows t)
 
-;; TODO read me mode disabled
-(setq buffer-read-only nil)
-
-
-(setq company-idle-delay nil)
 
 
 ;; org base config
@@ -79,6 +71,47 @@
       deft-dictionary org_folder
       org-roam-directory org_folder
       org-preview-latex-image-directory "/tmp/ltximg/")
+
+
+
+;; org - Make orgfiles more beautiful and pure
+;; italics and bold render correct
+;; (setq org-hide-emphasis-markers t)
+
+;; header bullets
+;; (use-package org-bullets
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+;; org-headings
+;; TODO
+;; https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+;;
+;; (add-hook 'org-mode-hook 'variable-pitch-mode)
+;; (add-hook 'org-mode-hook 'visual-line-mode)
+;;
+
+
+
+;; Using org-present for presenting .org slides
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
+
+
+
+
 
 
 ;; `Bibtex-Config'
@@ -133,15 +166,8 @@
 
 
 ;; org-roam
-;; TODO
 (use-package emacsql-sqlite3 :ensure t)
-
-
-
-
 (setq org-roam-completion-system 'helm)
-
-
 (after! org-roam
   (setq org-roam-ref-capture-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
@@ -151,10 +177,6 @@
                  #+ROAM_KEY: ${ref}
                  - source :: ${ref}"
            :unnarrowed t))))
-
-
-
-
 
 
 
@@ -358,12 +380,310 @@
 
 
 
+;; Improved buffer, undo and redo
+(winner-mode 1)
+(global-set-key (kbd "<C-left>") 'winner-undo)
+(global-set-key (kbd "<C-right>") 'winner-redo)
+
+
+;; Pure text editing
+(add-hook 'text-mode-hook
+          '(lambda ()
+             (flyspell-mode)
+             (git-gutter+-mode)
+             (auto-fill-mode 1)))
+(setq longlines-show-hard-newlines t)
+
+
+;; Compiler setup
+(use-package compile
+  :init
+  (setq compilation-ask-about-save nil
+        compilation-scroll-output 'next-error
+        ;; Don't stop on info or warnings.
+        compilation-skip-threshold 2)
+  )
+;; Taken from https://emacs.stackexchange.com/questions/31493/print-elapsed-time-in-compilation-buffer/56130#56130
+(make-variable-buffer-local 'my-compilation-start-time)
+(add-hook 'compilation-start-hook #'my-compilation-start-hook)
+(defun my-compilation-start-hook (proc)
+  (setq my-compilation-start-time (current-time)))
+(add-hook 'compilation-finish-functions #'my-compilation-finish-function)
+(defun my-compilation-finish-function (buf why)
+  (let* ((elapsed  (time-subtract nil my-compilation-start-time))
+         (msg (format "Compilation took: %s" (format-time-string "%T.%N" elapsed t))))
+    (save-excursion (goto-char (point-max)) (insert msg))
+    (message "Compilation %s: %s" (string-trim-right why) msg)))
+
+
+;; Auto complete
+(use-package company
+  :init
+  (setq company-idle-delay 0.0
+        company-minimum-prefix-length 1))
+(global-company-mode 1)
+(global-set-key (kbd "<C-return>") 'company-complete)
+(use-package company-emoji)
+(add-to-list 'company-backends 'company-emoji)
+
+
+;; Markdown
+(use-package emojify)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+(add-hook 'markdown-mode-hook 'emojify-mode)
+
+
+;; Java
+(defun tkj-insert-serial-version-uuid()
+  (interactive)
+  (insert "private static final long serialVersionUID = 1L;"))
+(defun tkj-default-code-style-hook()
+  (setq c-basic-offset 2
+        c-label-offset 0
+        tab-width 2
+        indent-tabs-mode nil
+        compile-command "mvn -q -o -f ~/src/content-engine/engine/engine-core/pom.xml test -DtrimStackTrace=false"
+        require-final-newline nil))
+(add-hook 'java-mode-hook 'tkj-default-code-style-hook)
+(use-package flycheck
+  :init
+  (add-to-list 'display-buffer-alist
+               `(,(rx bos "*Flycheck errors*" eos)
+                 (display-buffer-reuse-window
+                  display-buffer-in-side-window)
+                 (side            . bottom)
+                 (reusable-frames . visible)
+                 (window-height   . 0.15))))
+(use-package idle-highlight)
+(defun my-java-mode-hook ()
+  (auto-fill-mode)
+  (flycheck-mode)
+  (git-gutter+-mode)
+  (gtags-mode)
+  (idle-highlight)
+  (subword-mode)
+  (yas-minor-mode)
+  (set-fringe-style '(8 . 0))
+  (define-key c-mode-base-map (kbd "C-M-j") 'tkj-insert-serial-version-uuid)
+  (define-key c-mode-base-map (kbd "C-m") 'c-context-line-break)
+  (define-key c-mode-base-map (kbd "S-<f7>") 'gtags-find-tag-from-here)
+  ;; Fix indentation for anonymous classes
+  (c-set-offset 'substatement-open 0)
+  (if (assoc 'inexpr-class c-offsets-alist)
+      (c-set-offset 'inexpr-class 0))
+  ;; Indent arguments on the next line as indented body.
+  (c-set-offset 'arglist-intro '++))
+(add-hook 'java-mode-hook 'my-java-mode-hook)
+(use-package projectile :ensure t)
+(use-package yasnippet :ensure t)
+(use-package lsp-mode :ensure t
+  :bind (("\C-\M-b" . lsp-find-implementation)
+         ("M-RET" . lsp-execute-code-action))
+  :config
+  (setq lsp-inhibit-message t
+        lsp-eldoc-render-all nil
+        lsp-enable-file-watchers nil
+        lsp-highlight-symbol-at-point nil)
+  ;; Performance tweaks, see
+  ;; https://github.com/emacs-lsp/lsp-mode#performance
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  (setq lsp-idle-delay 0.500))
+(use-package hydra :ensure t)
+(use-package company-lsp :ensure t)
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-prefer-flymake nil
+        lsp-ui-doc-delay 5.0
+        lsp-ui-sideline-enable nil
+        lsp-ui-sideline-show-symbol nil))
+(use-package lsp-java
+  :ensure t
+  :init
+  (setq lsp-java-vmargs
+        (list
+         "-noverify"
+         "-Xmx2G"
+         "-XX:+UseG1GC"
+         "-XX:+UseStringDeduplication"
+         "-javaagent:/home/sagenos/.emacs.d/modules/lang/java/lombok.jar"
+         )
+        ;; Don't organise imports on save
+        lsp-java-save-action-organize-imports nil
+        ;; Currently (2019-04-24), dap-mode works best with Oracle
+        ;; JDK, see https://github.com/emacs-lsp/dap-mode/issues/31
+        ;;
+        ;; lsp-java-java-path "~/.emacs.d/oracle-jdk-12.0.1/bin/java"
+        ;; lsp-java-java-path "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"
+        lsp-java-java-path "/usr/bin/java")
+  :config
+  (add-hook 'java-mode-hook #'lsp))
+(use-package dap-mode
+  :ensure t
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1)
+  (dap-register-debug-template
+   "localhost:5005"
+   (list :type "java"
+         :request "attach"
+         :hostName "localhost"
+         :port 5005))
+  (dap-register-debug-template
+   "10.186.38.171:5005"
+   (list :type "java"
+         :request "attach"
+         :hostName "10.186.38.171"
+         :port 5005)))
+;; (use-package dap-java
+;;   :ensure nil
+;;   :after (lsp-java)
+;;   ;; The :bind here makes use-package fail to lead the dap-java block!
+;;   ;; :bind
+;;   ;; (("C-c R" . dap-java-run-test-class)
+;;   ;;  ("C-c d" . dap-java-debug-test-method)
+;;   ;;  ("C-c r" . dap-java-run-test-method)
+;;   ;;  )
+;;   :config
+;;   (global-set-key (kbd "<f7>") 'dap-step-in)
+;;   (global-set-key (kbd "<f8>") 'dap-next)
+;;   (global-set-key (kbd "<f9>") 'dap-continue)
+;;   )
+;; (use-package treemacs
+;;   :init
+;;   (add-hook 'treemacs-mode-hook
+;;             (lambda () (treemacs-resize-icons 15))))
+
+
+
+;; shell
+(defun spawn-shell (name)
+  "Create a new shell buffer
+taken from http://stackoverflow.com/a/4116113/446256"
+  (interactive "Name of shell buffer to create: ")
+  (pop-to-buffer (get-buffer-create (generate-new-buffer-name name)))
+  (shell (current-buffer)))
+(defun my-shell-mode-hook ()
+  (process-send-string (get-buffer-process (current-buffer))
+                       "export PAGER=cat\n")
+  (process-send-string (get-buffer-process (current-buffer))
+                       "uprompt\n\n\n"))(
+  add-hook 'shell-mode-hook 'my-shell-mode-hook)
+(setq-default explicit-shell-file-name "/bin/bash")
+
+
+;; bash settings
+(setq sh-basic-offset 2
+      sh-indentation 2)
+(add-hook 'sh-mode-hook 'yas-minor-mode)
+(add-hook 'sh-mode-hook 'flycheck-mode)
+(add-hook 'sh-mode-hook 'git-gutter+-mode)
+;; Allow functions on the form <word>.<rest>(). Without my change,
+;; allowing punctuation characters in the function name,, only
+;; <rest>() is allowed.
+(setq sh-imenu-generic-expression
+      (quote
+       ((sh
+         (nil "^\\s-*function\\s-+\\([[:alpha:]_][[:alnum:]\\s._]*\\)\\s-*\\(?:()\\)?" 1)
+         (nil "^\\s-*\\([[:alpha:]_][[:alnum:]\\s._]*\\)\\s-*()" 1)))))
+
+
+;; Shell escapes
+(defun display-ansi-colors ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
+
+
+
+;; python
+(use-package conda
+  :ensure t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+    (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
+
+(use-package projectile
+  :ensure t)
+(use-package lsp-mode
+  :ensure t)
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-ui-doc-max-height 20
+        lsp-ui-doc-max-width 50
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-peek-always-show t))
+
+(use-package company
+  :ensure t
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0
+        company-tooltip-limit 10
+        company-transformers nil
+        company-show-numbers t
+        )
+  (global-company-mode +1))
+
+(use-package company-lsp
+  :ensure t
+  :commands (company-lsp)
+  )
+
+(use-package company-box
+  :ensure t
+  :hook (company-mode . company-box-mode))
+
+
+
+;; install LSP company backend for LSP-driven completion
+;; (use-package company-lsp
+;;   :ensure t
+;;   :config
+;;   (push 'company-lsp company-backends))
+
+(add-hook 'python-mode-hook 'anaconda-mode)
+(eval-after-load "company"
+   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
+
+
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args "-i")
+
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+                          "jupyter")
 
 
 
 
 
-
+;; WSL config - open links from org mode in emacs
+;;
+(setq-default sysTypeSpecific  system-type) ;; get the system-type value
+(cond
+ ;; If type is "gnu/linux", override to "wsl/linux" if it's WSL.
+ ((eq sysTypeSpecific 'gnu/linux)
+  (when (string-match "Linux.*Microsoft.*Linux"
+                      (shell-command-to-string "uname -a"))
+    (setq-default sysTypeSpecific "wsl/linux") ;; for later use.
+    (setq
+     cmdExeBin"/mnt/c/Windows/System32/cmd.exe"
+     cmdExeArgs '("/c" "start" "") )
+    (setq
+     browse-url-generic-program  cmdExeBin
+     browse-url-generic-args     cmdExeArgs
+     browse-url-browser-function 'browse-url-generic)
+    )))
 
 
 

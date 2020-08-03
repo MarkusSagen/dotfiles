@@ -15,47 +15,62 @@ ZSH_THEME="amuse"
 
 
 # load dircolors
-eval `dircolors ~/.dircolors`
+# eval `dircolors ~/.dircolors`
 
+alias qq="exit"
 alias c="clear"
 alias la="ls -A"
 alias jn="jupyter notebook --ip=0.0.0.0 --port=8000 --no-browser"
 alias doom="~/.emacs.d/bin/doom"
 alias ds="~/.emacs.d/bin/doom sync && emacs"
+alias d="emacs"
+alias e="emacs"
+alias v="vim"
+alias fix='
+cp ~/.doom.d/* ~/dotfiles/.doom.d/
+cp ~/.zshrc ~/dotfiles/wsl/
+'
 
-
+# Run CLI emacs
+alias eme='
+export DISPLAY=:0.0
+export LIBGL_ALWAYS_INDIRECT=1
+setxkbmap -layout us
+setsid emacs
+exit
+'
 
 if [[ $TERM == xterm ]]; then
-	        TERM=xterm-256color
-	fi
+   TERM=xterm-256color
+fi
 
 
-	if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-		        alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
-		fi
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
 
-		function vterm_printf(){
-			        if [ -n "$TMUX" ]; then
-					                printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-							        elif [ "${TERM%%-*}" = "screen" ]; then
-									                printf "\eP\e]%s\007\e\\" "$1"
-											        else
-													                printf "\e]%s\e\\" "$1"
-															        fi
-															}
+function vterm_printf(){
+if [ -n "$tmux" ]; then
+   	 printf "\eptmux;\e\e]%s\007\e\\" "$1"
+elif [ "${term%%-*}" = "screen" ]; then
+	 printf "\ep\e]%s\007\e\\" "$1"
+else
+	printf "\e]%s\e\\" "$1"
+fi
+}
 
 
 __conda_setup="$('/home/sagenos/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-	    eval "$__conda_setup"
-    else
-	        if [ -f "/home/sagenos/miniconda3/etc/profile.d/conda.sh" ]; then
-			        . "/home/sagenos/miniconda3/etc/profile.d/conda.sh"
-				    else
-					            export PATH="/home/sagenos/miniconda3/bin:$PATH"
-						        fi
-						fi
-						unset __conda_setup
+   eval "$__conda_setup"
+else
+	if [ -f "/home/sagenos/miniconda3/etc/profile.d/conda.sh" ]; then
+	   . "/home/sagenos/miniconda3/etc/profile.d/conda.sh"
+  	else
+		export path="/home/sagenos/miniconda3/bin:$path"
+	fi
+fi
+unset __conda_setup
 
 
 
@@ -153,12 +168,15 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zsconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /home/sagenos/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/sagenos/downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/sagenos/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+PATH=~/.local/bin:$PATH
