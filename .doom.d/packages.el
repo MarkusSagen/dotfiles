@@ -56,28 +56,28 @@
 (package! emojify)
 
 
-;; python
+;; Python
 (package! conda)
-(package! company-box)
-(package! ein) ;; jupyter notebook in emacs
+(package! company-box) ;; completion for anaconda
+(package! ein)         ;; jupyter notebook in emacs
+(package! realgud)     ;; python debugger
 
-;; java
+;; Java
 (package! company-emoji)
 (package! company-lsp)
 (package! dap-mode)
 (package! idle-highlight)
 
 
-;; org
+;; Org
 (package! org-bullets)
 (package! org-journal)
 (package! org-fancy-priorities)
 (package! org-super-agenda)
 
 
-;; org roam
-(package! company-org-roam
-  :recipe (:host github :repo "jethrokuan/company-org-roam"))
+;; Org-Roam
+(package! emacsql-sqlite3)
 (package! org-brain)
 (package! org-download)
 (package! org-drill)         ;; spaced repetition
@@ -89,3 +89,5 @@
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (package! org-roam-server
     :recipe (:host github :repo "org-roam/org-roam-server"))
+(package! company-org-roam
+  :recipe (:host github :repo "jethrokuan/company-org-roam"))

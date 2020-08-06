@@ -29,7 +29,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "/mnt/c/Users/marku/Dropbox/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -65,11 +65,9 @@
 
 
 ;; org base config
-(setq org_folder (concat (getenv "HOME") "/org/")
-      ref_file (concat (getenv "HOME") "/org/refs/refs.bib")
-      org-directory org_folder
-      deft-dictionary org_folder
-      org-roam-directory org_folder
+(setq ref_file           "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
+      deft-dictionary    "/mnt/c/Users/marku/Dropbox/org"
+      org-roam-directory "/mnt/c/Users/marku/Dropbox/org/"
       org-preview-latex-image-directory "/tmp/ltximg/")
 
 
@@ -79,9 +77,9 @@
 ;; (setq org-hide-emphasis-markers t)
 
 ;; header bullets
-;; (use-package org-bullets
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(use-package org-bullets
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; org-headings
 ;; TODO
@@ -118,10 +116,14 @@
 ;; ;; Add Bibtex references search
 (autoload 'helm-bibtex "helm-bibtex" "" t)
 (setq
- bibtex-completion-notes-path (concat (getenv "HOME") "/org/")
- bibtex-completion-bibliography (concat (getenv "HOME") "/org/refs/refs.bib")
+ ;; bibtex-completion-notes-path (concat (getenv "HOME") "/org/")
+ ;; bibtex-completion-bibliography (concat (getenv "HOME") "/org/refs/refs.bib")
+ ;; bibtex-completion-pdf-field "file"
+ ;; bibtex-completion-library-path (concat (getenv "HOME") "/Zotero/storage/")
+ bibtex-completion-notes-path   "/mnt/c/Users/marku/Dropbox/org"
+ bibtex-completion-bibliography "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
  bibtex-completion-pdf-field "file"
- bibtex-completion-library-path (concat (getenv "HOME") "/Zotero/storage/")
+ bibtex-completion-library-path "/mnt/c/Users/marku/Dropbox/org/zotero/"
  bibtex-completion-pdf-open-function 'org-open-file
  bibtex-completion-notes-template-multiple-files
  (concat
@@ -151,24 +153,36 @@
 
 
 ;; org-ref
+;; TODO LOADS really slow for some reason...!
 (use-package! org-ref
   :config
   (setq
    org-ref-completion-library 'org-ref-ivy-cite
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-   org-ref-default-bibliography (list (concat (getenv "HOME") "/org/refs/refs.bib"))
-   org-ref-bibliography-notes (concat (getenv "HOME") "org/Research-Notes/notes.org")
    org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-   org-ref-notes-directory (concat (getenv "HOME") "/org")
-   org-ref-notes-function 'orb-edit-notes
-   ))
+   org-ref-default-bibliography "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
+   org-ref-bibliography-notes   "/mnt/c/Users/marku/Dropbox/org/Research-Notes/notes.org"
+   org-ref-notes-directory      "/mnt/c/Users/marku/Dropbox/org"
+   org-ref-notes-function 'orb-edit-notes))
 
 
 
-;; org-roam
-(use-package emacsql-sqlite3 :ensure t)
-(setq org-roam-completion-system 'helm)
+;; ;; org-roam
+(use-package! org-roam
+  :ensure t
+  :custom (org-roam-directory "/mnt/c/Users/marku/Dropbox/org/")
+  :bind (:map org-roam-mode-map
+         (("C-c n l" . org-roam)
+          ("C-c n f" . org-roam-find-file)
+          ("C-c n g" . org-roam-graph-show))
+         :map org-mode-map
+         (("C-c n i" . org-roam-insert))
+         (("C-c n I" . org-roam-insert-immediate)))
+)
+
+
 (after! org-roam
+  (setq org-roam-graph-viewer "/usr/bin/open")
   (setq org-roam-ref-capture-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
            "%?"
@@ -176,17 +190,55 @@
            :head "#+TITLE: ${title}
                  #+ROAM_KEY: ${ref}
                  - source :: ${ref}"
-           :unnarrowed t))))
+           :unnarrowed t)))
+  (setq org-roam-capture-templates
+        '(("d" "default" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "${slug}"
+           :head "#+TITLE: ${title}\n"
+           :unnarrowed t)) ))
+
+
+
+(after! org-roam
+  (map! :leader
+        :prefix "n"
+        :desc "org-roam" "I" #'org-roam
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+        :desc "org-roam-find-file" "f" #'org-roam-find-file
+        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+        :desc "org-roam-ref" "B" #'org-roam-find-ref
+        :desc "org-roam-capture" "c" #'org-roam-capture))
+
+(use-package! company-org-roam
+  :ensure t
+  :config
+  (push 'company-org-roam company-backends))
+
+
+
+;; ;; ;; Capture from websites
+;; ;; (after! org-roam
+;; ;;   (setq org-roam-capture-ref-templates
+;; ;;         '(("r" "ref" plain (function org-roam-capture--get-point)
+;; ;;            "%?"
+;; ;;            :file-name "websites/${slug}"
+;; ;;                           :head "#+TITLE: ${title}
+;; ;;     #+ROAM_KEY: ${ref}
+;; ;;     - source :: ${ref}"
+;; ;;                                          :unnarrowed t))))
 
 
 
 
 ;; org-journal
-(use-package org-journal
+(use-package! org-journal
   :bind
   ("C-c n j" . org-journal-new-entry)
   :custom
-  (org-journal-dir (concat (getenv "HOME") "/org/journal"))
+  ;; (org-journal-dir (concat (getenv "HOME") "/org/journal"))
+  (org-journal-dir "/mnt/c/Users/marku/Dropbox/org/journal")
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-date-format "%A, %d %B %Y"))
@@ -194,9 +246,8 @@
 
 
 
-(use-package org-roam-bibtex
-  :after (org-roam)
-
+(use-package! org-roam-bibtex
+  :after org-roam
   :ensure t
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
@@ -237,7 +288,8 @@
    org-noter-always-create-frame nil
    org-noter-hide-other nil
    org-noter-doc-split-fraction '(0.4 0.6)
-   org-noter-notes-search-path (list (concat (getenv "HOME") "/org/"))))
+   ;; org-noter-notes-search-path (list (concat (getenv "HOME") "/org/"))))
+   org-noter-notes-search-path  (list "/mnt/c/Users/marku/Dropbox/org/")))
 
 
 
@@ -262,15 +314,15 @@
   (deft-recursive t)
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
-        (deft-directory (concat (getenv "HOME") "/org")))
+        ;; (deft-directory (concat (getenv "HOME") "/org")))
+        (deft-directory "/mnt/c/Users/marku/Dropbox/org"))
 
 
-
-;; org-download
-(require 'org-download)
-
-;; Drag-and-drop to `dired`
-(add-hook 'dired-mode-hook 'org-download-enable)
+;; TODO
+;; ;; org-download
+;;(require 'org-download)
+;; ;; Drag-and-drop to `dired`
+;; (add-hook 'dired-mode-hook 'org-download-enable)
 
 
 ;; org-agenda
@@ -602,17 +654,17 @@ taken from http://stackoverflow.com/a/4116113/446256"
 
 
 ;; python
-(use-package conda
+(use-package! conda
   :ensure t
   :init
   (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
     (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
 
-(use-package projectile
+(use-package! projectile
   :ensure t)
-(use-package lsp-mode
+(use-package! lsp-mode
   :ensure t)
-(use-package lsp-ui
+(use-package! lsp-ui
   :ensure t
   :config
   (setq lsp-ui-doc-max-height 20
@@ -620,7 +672,7 @@ taken from http://stackoverflow.com/a/4116113/446256"
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-peek-always-show t))
 
-(use-package company
+(use-package! company
   :ensure t
   :config
   (setq company-minimum-prefix-length 1
@@ -631,12 +683,13 @@ taken from http://stackoverflow.com/a/4116113/446256"
         )
   (global-company-mode +1))
 
-(use-package company-lsp
-  :ensure t
-  :commands (company-lsp)
-  )
 
-(use-package company-box
+(use-package! company-lsp
+  :ensure t
+  :commands (company-lsp))
+
+
+(use-package! company-box
   :ensure t
   :hook (company-mode . company-box-mode))
 
@@ -664,7 +717,21 @@ taken from http://stackoverflow.com/a/4116113/446256"
                           "jupyter")
 
 
+(after! company
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2)
+  (setq company-show-numbers t)
+  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
 
+(set-company-backend! '(text-mode
+                        markdown-mode
+                        gfm-mode)
+  '(:seperate company-ispell
+    company-files
+    company-yasnippet))
+
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
 
 
 ;; WSL config - open links from org mode in emacs
