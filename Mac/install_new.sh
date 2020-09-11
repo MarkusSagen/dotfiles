@@ -13,9 +13,50 @@ brew install the_silver_searcher 	# Fast search with 'ag'
 brew install fzf 									# Fuzzy finder, type '**<TAB>' or just <TAB> to search
 brew install ripgrep
 brew install cmake
-brew install cask mactex
+brew cask install mactex
+
+# Install zsh
+brew install zsh
+sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
+sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/esh
+zsh
+0
+brew install zsh-completions
+
+# oh-my-zsh
+Y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ZSH=/Users/SagenOS/.oh-my-zsh
+
+# Syntax highlight
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# autocomplete zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Install powerline and other fonts
 pip3 install powerline-status
-git clone https://github.com/edwardtufte/et-book.git ~/
-cd ~/et-book/et-book/~/et-book/et-book/et-book-semi-bold-old-style-figures /
+
+# Emacs and Doom emacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+
+# Install YARN
+curl -o- -L https://yarnpkg.com/install.sh | bash
+
+# Install NodeJS
+curl -sL install-node.now.sh/lts | bash
+
+# Anaconda
+curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-MacOSX-x86_64.pkg
+sudo installer -pkg Anaconda3-2020.02-MacOSX-x86_64.pkg -target /
+
+
+cmake -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DCMAKE_INSTALL_PREFIX\=~/.emacs.d/.local/etc/irony-server/ -DLIBCLANG_LIBRARY=/usr/local/opt/llvm/lib/libclang.dylib -DLIBCLANG_INCLUDE_DIR=/usr/local/opt/llvm/include -DCMAKE_PREFIX_PATH=/usr/local/opt/llvm /Users/SagenOS/.emacs.d/.local/straight/build/irony/server && cmake --build . --use-stderr --config Release --target install
