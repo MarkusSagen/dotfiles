@@ -15,6 +15,18 @@ brew install ripgrep
 brew install cmake
 brew cask install mactex
 
+# iTerm2
+brew cask install iterm2
+
+
+# Emacs and Doom emacs
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+
 # Install zsh
 brew install zsh
 sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
@@ -40,12 +52,18 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Install powerline and other fonts
 pip3 install powerline-status
 
-# Emacs and Doom emacs
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
-ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
+#################################
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
+#########################
+# MAKE SURE TO GO IN AND CHANGE IN iTERM2:
+#	       Preferences -> Profiles -> Text -> Font -> Powerline
+#########################
+
+
 
 
 # Install YARN
