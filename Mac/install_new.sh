@@ -77,4 +77,7 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-MacOSX-x86_64.pkg
 sudo installer -pkg Anaconda3-2020.02-MacOSX-x86_64.pkg -target /
 
 
-cmake -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DCMAKE_INSTALL_PREFIX\=~/.emacs.d/.local/etc/irony-server/ -DLIBCLANG_LIBRARY=/usr/local/opt/llvm/lib/libclang.dylib -DLIBCLANG_INCLUDE_DIR=/usr/local/opt/llvm/include -DCMAKE_PREFIX_PATH=/usr/local/opt/llvm /Users/SagenOS/.emacs.d/.local/straight/build/irony/server && cmake --build . --use-stderr --config Release --target install
+################
+# When done,...
+# Copy .zshrc and .doom configs to home from dotfiles/
+
