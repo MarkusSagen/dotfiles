@@ -81,3 +81,7 @@ sudo installer -pkg Anaconda3-2020.02-MacOSX-x86_64.pkg -target /
 # When done,...
 # Copy .zshrc and .doom configs to home from dotfiles/
 
+cp .zshrc ~/
+cp -r ../.doom.d ~/
+cp ../wsl/lombok.jar ~/.emacs.d/modules/lang/java/
+doom sync
