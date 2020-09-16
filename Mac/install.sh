@@ -21,6 +21,10 @@ brew install ripgrep
 brew install cmake
 brew install cask mactex
 
+# remote access to filesystems and list filesystem (NeoTree)
+brew cask install osxfuse
+brew install sshfs
+
 # Install Doom Emacs
 # https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#emacs--dependencies
 # Pre-requisites
@@ -110,22 +114,3 @@ spctl --add /Applications/iTerm.app/
 nohup open /Applications/iTerm.app/ &>/dev/null &
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-cmake -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON -DCMAKE_INSTALL_PREFIX\=/Users/SagenOS/.emacs.d/.local/etc/irony-server/ -DLIBCLANG_LIBRARY=/usr/local/opt/llvm/lib/libclang.dylib -DLIBCLANG_INCLUDE_DIR=/usr/local/opt/llvm/include -DCMAKE_PREFIX_PATH=/usr/local/opt/llvm /Users/SagenOS/.emacs.d/.local/straight/build/irony/server && cmake --build . --use-stderr --config Release --target install
