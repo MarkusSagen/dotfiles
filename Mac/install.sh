@@ -1,10 +1,21 @@
 # Install on Mac
 
 
+###################################
+# When done, make sure to install 
+#    python3.7 and update all packages
+#    
+#    yes | conda install -c anaconda python3.7
+#    yes | conda update --all
+#
+#   Make sure to add those paths to .config/nvim/init.vim
+
 # Install Homebrew
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+# search files and directories
 brew install git ripgrep
+brew install ack
 brew install coreutils fd
 xcode-select --install
 brew install python3
@@ -41,6 +52,14 @@ curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.t
 tar xzf nvim-macos.tar.gz
 ./nvim-osx64/bin/nvim
 
+# install plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+# install pynvim
+pip3 install pynvim
 
 # Install YARN
 curl -o- -L https://yarnpkg.com/install.sh | bash

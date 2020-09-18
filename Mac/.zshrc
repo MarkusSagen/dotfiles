@@ -17,6 +17,10 @@ ZSH_THEME="amuse"
 # load dircolors
 # eval `dircolors ~/.dircolors`
 
+alias iphone="open -a Simulator"
+alias android="$ANDROID_HOME/tools/emulator"
+alias emulator="$ANDROID_HOME/tools/emulator"
+
 alias qq="exit"
 alias c="clear"
 alias la="ls -A"
@@ -185,3 +189,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# Platform dependent alias
+alias move="source ~/copyFilesRemote.sh"
