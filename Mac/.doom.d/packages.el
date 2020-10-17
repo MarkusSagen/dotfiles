@@ -62,11 +62,21 @@
 (package! ein)         ;; jupyter notebook in emacs
 (package! realgud)     ;; python debugger
 
+(package! company-tabnine
+  :recipe (:host github :repo "TommyX12/company-tabnine"))
+
+
 ;; Java
-(package! company-emoji)
+;;(package! company-emoji)
 (package! company-lsp)
 (package! dap-mode)
 (package! idle-highlight)
+
+;; org and Latex
+(package! org-pdftools
+  :recipe (:host github :repo "fuxialexander/org-pdftools"))
+(package! org-pdfview
+  :recipe (:host github :repo "markus1189/org-pdfview"))
 
 
 ;; Org
@@ -74,6 +84,13 @@
 (package! org-journal)
 (package! org-fancy-priorities)
 (package! org-super-agenda)
+(package! ov-highlight
+  :recipe (:host github :repo "jkitchin/ov-highlight"))
+
+;; Make presentations
+(package! epresent)
+(package! ox-reveal)
+(package! htmlize)
 
 
 ;; Org-Roam
@@ -91,3 +108,4 @@
     :recipe (:host github :repo "org-roam/org-roam-server"))
 (package! company-org-roam
   :recipe (:host github :repo "jethrokuan/company-org-roam"))
+
