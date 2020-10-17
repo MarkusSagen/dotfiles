@@ -29,12 +29,12 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/mnt/c/Users/marku/Dropbox/org")
+(setq org-directory "/Users/admin/Dropbox/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
+;; (setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -65,9 +65,13 @@
 
 
 ;; org base config
-(setq ref_file           "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
-      deft-dictionary    "/mnt/c/Users/marku/Dropbox/org"
-      org-roam-directory "/mnt/c/Users/marku/Dropbox/org/"
+(setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+(setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+;;
+(setq ref_file           "~/Dropbox/zotero/refs.bib"
+
+      deft-dictionary    "~/Dropbox/org"
+      org-roam-directory "~/Dropbox/org/"
       org-preview-latex-image-directory "/tmp/ltximg/")
 
 
@@ -120,10 +124,10 @@
  ;; bibtex-completion-bibliography (concat (getenv "HOME") "/org/refs/refs.bib")
  ;; bibtex-completion-pdf-field "file"
  ;; bibtex-completion-library-path (concat (getenv "HOME") "/Zotero/storage/")
- bibtex-completion-notes-path   "/mnt/c/Users/marku/Dropbox/org"
- bibtex-completion-bibliography "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
+ bibtex-completion-notes-path   "~/Dropbox/org"
+ bibtex-completion-bibliography "~/Dropbox/zotero/refs.bib"
  bibtex-completion-pdf-field "file"
- bibtex-completion-library-path "/mnt/c/Users/marku/Dropbox/org/zotero/"
+ bibtex-completion-library-path "~/Dropbox/zotero/"
  bibtex-completion-pdf-open-function 'org-open-file
  bibtex-completion-notes-template-multiple-files
  (concat
@@ -160,9 +164,9 @@
    org-ref-completion-library 'org-ref-ivy-cite
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
    org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-   org-ref-default-bibliography "/mnt/c/Users/marku/Dropbox/org/zotero/refs.bib"
-   org-ref-bibliography-notes   "/mnt/c/Users/marku/Dropbox/org/Research-Notes/notes.org"
-   org-ref-notes-directory      "/mnt/c/Users/marku/Dropbox/org"
+   org-ref-default-bibliography "~/Dropbox/zotero/refs.bib"
+   org-ref-bibliography-notes   "~/Dropbox/org/Research-Notes/notes.org"
+   org-ref-notes-directory      "~/Dropbox/org"
    org-ref-notes-function 'orb-edit-notes))
 
 
@@ -170,7 +174,7 @@
 ;; ;; org-roam
 (use-package! org-roam
   :ensure t
-  :custom (org-roam-directory "/mnt/c/Users/marku/Dropbox/org/")
+  :custom (org-roam-directory "~/Dropbox/org/")
   :bind (:map org-roam-mode-map
          (("C-c n l" . org-roam)
           ("C-c n f" . org-roam-find-file)
@@ -211,23 +215,19 @@
         :desc "org-roam-ref" "B" #'org-roam-find-ref
         :desc "org-roam-capture" "c" #'org-roam-capture))
 
-(use-package! company-org-roam
-  :ensure t
-  :config
-  (push 'company-org-roam company-backends))
 
 
 
-;; ;; ;; Capture from websites
-;; ;; (after! org-roam
-;; ;;   (setq org-roam-capture-ref-templates
-;; ;;         '(("r" "ref" plain (function org-roam-capture--get-point)
-;; ;;            "%?"
-;; ;;            :file-name "websites/${slug}"
-;; ;;                           :head "#+TITLE: ${title}
-;; ;;     #+ROAM_KEY: ${ref}
-;; ;;     - source :: ${ref}"
-;; ;;                                          :unnarrowed t))))
+;; Capture from websites
+(after! org-roam
+  (setq org-roam-capture-ref-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "websites/${slug}"
+                          :head "#+TITLE: ${title}
+    #+ROAM_KEY: ${ref}
+    - source :: ${ref}"
+                                         :unnarrowed t))))
 
 
 
@@ -238,7 +238,7 @@
   ("C-c n j" . org-journal-new-entry)
   :custom
   ;; (org-journal-dir (concat (getenv "HOME") "/org/journal"))
-  (org-journal-dir "/mnt/c/Users/marku/Dropbox/org/journal")
+  (org-journal-dir "~/Dropbox/org/journal")
   (org-journal-date-prefix "#+TITLE: ")
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-date-format "%A, %d %B %Y"))
@@ -277,6 +277,22 @@
 (map! :ne "SPC n b" #'helm-bibtex)
 
 
+
+;; (setq bibtex-completion-bibliography "~/Dropbox/zotero/refs.bib"
+;;       bibtex-completion-library-path "~/Dropbox/zotero"
+;;       bibtex-completion-notes-path "~/Dropbox/org")
+
+;; ;; open pdf with system pdf viewer (works on mac)
+;; (setq bibtex-completion-pdf-open-function
+;;   (lambda (fpath)
+;;     (start-process "open" "*open*" "open" fpath)))
+
+;; (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+
+
+
+
 ;; org-noter
 (use-package org-noter
   :after org
@@ -289,7 +305,7 @@
    org-noter-hide-other nil
    org-noter-doc-split-fraction '(0.4 0.6)
    ;; org-noter-notes-search-path (list (concat (getenv "HOME") "/org/"))))
-   org-noter-notes-search-path  (list "/mnt/c/Users/marku/Dropbox/org/")))
+   org-noter-notes-search-path  (list "~/Dropbox/org/")))
 
 
 
@@ -315,7 +331,7 @@
   (deft-use-filter-string-for-filename t)
   (deft-default-extension "org")
         ;; (deft-directory (concat (getenv "HOME") "/org")))
-        (deft-directory "/mnt/c/Users/marku/Dropbox/org"))
+        (deft-directory "~/Dropbox/org"))
 
 
 ;; TODO
@@ -438,13 +454,6 @@
 (global-set-key (kbd "<C-right>") 'winner-redo)
 
 
-;; Pure text editing
-(add-hook 'text-mode-hook
-          '(lambda ()
-             (flyspell-mode)
-             (git-gutter+-mode)
-             (auto-fill-mode 1)))
-(setq longlines-show-hard-newlines t)
 
 
 ;; Compiler setup
@@ -468,21 +477,16 @@
     (message "Compilation %s: %s" (string-trim-right why) msg)))
 
 
-;; Auto complete
-(use-package company
-  :init
-  (setq company-idle-delay 0.0
-        company-minimum-prefix-length 1))
-(global-company-mode 1)
-(global-set-key (kbd "<C-return>") 'company-complete)
+;; ;; Auto complete
+;; (use-package company
+;;   :init
+;;   (setq company-idle-delay 0.0
+;;         company-minimum-prefix-length 1))
+;; (global-company-mode 1)
+;; (global-set-key (kbd "<C-return>") 'company-complete)
 (use-package company-emoji)
 (add-to-list 'company-backends 'company-emoji)
 
-
-;; Markdown
-(use-package emojify)
-(add-hook 'markdown-mode-hook 'flyspell-mode)
-(add-hook 'markdown-mode-hook 'emojify-mode)
 
 
 ;; Java
@@ -559,7 +563,7 @@
          "-Xmx2G"
          "-XX:+UseG1GC"
          "-XX:+UseStringDeduplication"
-         "-javaagent:/home/sagenos/.emacs.d/modules/lang/java/lombok.jar"
+         "-javaagent:/Users/admin/.emacs.d/modules/lang/java/lombok.jar"
          )
         ;; Don't organise imports on save
         lsp-java-save-action-organize-imports nil
@@ -652,113 +656,150 @@ taken from http://stackoverflow.com/a/4116113/446256"
 
 
 
+;; TODO Complete later
+;; Test and move up later to 'company config section'
 
 ;; python
-(use-package! conda
-  :ensure t
-  :init
-  (setq conda-anaconda-home (expand-file-name "~/miniconda3"))
-    (setq conda-env-home-directory (expand-file-name "~/miniconda3")))
+;; (use-package! conda
+;;   :ensure t
+;;   :init
+;;   (setq conda-anaconda-home (expand-file-name "~/opt/anaconda3"))
+;;     (setq conda-env-home-directory (expand-file-name "~/opt/anaconda3")))
 
-(use-package! projectile
-  :ensure t)
-(use-package! lsp-mode
-  :ensure t)
-(use-package! lsp-ui
-  :ensure t
-  :config
-  (setq lsp-ui-doc-max-height 20
-        lsp-ui-doc-max-width 50
-        lsp-ui-sideline-ignore-duplicate t
-        lsp-ui-peek-always-show t))
+;; (use-package! projectile
+;;   :ensure t)
+;; (use-package! lsp-mode
+;;   :ensure t)
+;; (use-package! lsp-ui
+;;   :ensure t
+;;   :config
+;;   (setq lsp-ui-doc-max-height 20
+;;         lsp-ui-doc-max-width 50
+;;         lsp-ui-sideline-ignore-duplicate t
 
-(use-package! company
-  :ensure t
-  :config
-  (setq company-minimum-prefix-length 1
-        company-idle-delay 0
-        company-tooltip-limit 10
-        company-transformers nil
-        company-show-numbers t
-        )
-  (global-company-mode +1))
+;; (use-package! company
+;;   :ensure t
+;;   :config
+;;   (setq company-minimum-prefix-length 1
+;;         company-idle-delay 0
+;;         company-tooltip-limit 10
+;;         company-transformers nil
+;;         company-show-numbers t
+;;         )
+;;   (global-company-mode +1))
 
 
 (use-package! company-lsp
-  :ensure t
-  :commands (company-lsp))
+   :ensure t
+   :commands (company-lsp))
 
 
 (use-package! company-box
-  :ensure t
   :hook (company-mode . company-box-mode))
 
 
 
-;; install LSP company backend for LSP-driven completion
-;; (use-package company-lsp
-;;   :ensure t
-;;   :config
-;;   (push 'company-lsp company-backends))
+;; ;; install LSP company backend for LSP-driven completion
+;; ;; (use-package company-lsp
+;; ;;   :ensure t
+;; ;;   :config
+;; ;;   (push 'company-lsp company-backends))
 
-(add-hook 'python-mode-hook 'anaconda-mode)
-(eval-after-load "company"
-   '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
-
-
-(setq
- python-shell-interpreter "ipython"
- python-shell-interpreter-args "-i")
-
-(setq python-shell-interpreter "jupyter"
-      python-shell-interpreter-args "console --simple-prompt"
-      python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-                          "jupyter")
+;; (add-hook 'python-mode-hook 'anaconda-mode)
+;; (eval-after-load "company"
+;;    '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
 
 
-(after! company
-  (setq company-idle-delay 0.5
-        company-minimum-prefix-length 2)
-  (setq company-show-numbers t)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+;; (setq
+;;  python-shell-interpreter "ipython"
+;;  python-shell-interpreter-args "-i")
 
-(set-company-backend! '(text-mode
-                        markdown-mode
-                        gfm-mode)
-  '(:seperate company-ispell
-    company-files
-    company-yasnippet))
+;; (setq python-shell-interpreter "jupyter"
+;;       python-shell-interpreter-args "console --simple-prompt"
+;;       python-shell-prompt-detect-failure-warning nil)
+;; (add-to-list 'python-shell-completion-native-disabled-interpreters
+;;                           "jupyter")
+
+
+;; (after! company
+;;   (setq company-idle-delay 0.5
+;;         company-minimum-prefix-length 2)
+;;   (setq company-show-numbers t)
+;;   (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+
+;; (set-company-backend! '(text-mode
+;;                         markdown-mode
+;;                         gfm-mode)
+;;   '(:seperate company-ispell
+;;     company-files
+;;     company-yasnippet))
+
 
 (setq-default history-length 1000)
 (setq-default prescient-history-length 1000)
 
 
-;; WSL config - open links from org mode in emacs
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;; Company config
+;;      Autocomplete for program files and org files
 ;;
-(setq-default sysTypeSpecific  system-type) ;; get the system-type value
-(cond
- ;; If type is "gnu/linux", override to "wsl/linux" if it's WSL.
- ((eq sysTypeSpecific 'gnu/linux)
-  (when (string-match "Linux.*Microsoft.*Linux"
-                      (shell-command-to-string "uname -a"))
-    (setq-default sysTypeSpecific "wsl/linux") ;; for later use.
-    (setq
-     cmdExeBin"/mnt/c/Windows/System32/cmd.exe"
-     cmdExeArgs '("/c" "start" "") )
-    (setq
-     browse-url-generic-program  cmdExeBin
-     browse-url-generic-args     cmdExeArgs
-     browse-url-browser-function 'browse-url-generic)
-    )))
+;; Tabnine python autocomplete
+;; (use-package! company-tabnine :ensure t)
+(use-package company-tabnine
+  :ensure t
+  :when (featurep! :completion company)
+  :after prog-mode
+  ;;:config
+  :init
+  (add-hook 'prog-mode-hook #'(set-company-backend! 'prog-mode '(company-tabnine company-yasnippet com))))
+(add-to-list 'company-backends 'company-tabnine)
+
+;; company for org roam
+;; Org roam and in file completion
+;; https://www.ianjones.us/own-your-second-brain
+(use-package company-org-roam
+      :when (featurep! :completion company)
+      :after org-roam
+      :config
+      (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 
+;; trigger completion immediatly
+(setq company-idle-delay 0)
 
+;; Number the candidates (use M-1, M-2 etc to select completions).
+;; (setq company-show-numbers t)
+
+(with-eval-after-load 'company
+   (define-key company-active-map (kbd "C-SPC") #'company-tabnine))
+
+
+;; (with-eval-after-load 'company
+;;   (define-key company-active-map (kbd "<return>") nil)
+;;   (define-key company-active-map (kbd "RET") nil)
+;;   (define-key company-active-map (kbd "C-SPC") #'company-complete-selection))
+
+
+;; flyspell
+;; Spell-check
+;; (require 'flyspell)
+;; (setq flyspell-issue-message-flag nil
+;;       ispell-local-dictionary "en_GB"
+;;       ispell-program-name "aspell"
+;;       ispell-extra-args '("--sug-mode=ultra"))
+
+;; (add-hook 'text-mode-hook 'flyspell-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 
 ;; Custom Key mappings
-;;
-;;
+
+;; Treat 'y' or <CR> as yes, 'n' as no.
+(fset 'yes-or-no-p 'y-or-n-p)
+(define-key query-replace-map [return] 'act)
+(define-key query-replace-map [?\C-m] 'act)
+
 (map! :ne "SPC k" #'save-buffer)
 (map! :ne "M-/" #'comment-or-uncomment-region)
 (map! :ne "SPC / r" #'deadgrep)
@@ -767,6 +808,10 @@ taken from http://stackoverflow.com/a/4116113/446256"
 ;; Make the '*' character easier to reach
 (global-set-key (kbd "M-\\") (kbd "*"))
 (global-set-key (kbd "C-|") (kbd "*"))
+
+;; Make the  '-' character easier to reach
+(global-set-key (kbd "C-?") (kbd "-"))
+
 
 ;; Move between buffers
 (map! :n "M-<" #'evil-prev-buffer)
@@ -778,3 +823,5 @@ taken from http://stackoverflow.com/a/4116113/446256"
 (after! org (map! :map org-mode-map
                   :n "M-j" #'org-metadown
                   :n "M-k" #'org-metaup))
+
+

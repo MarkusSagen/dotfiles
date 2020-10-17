@@ -42,6 +42,7 @@ brew install sshfs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+
 # Doom Emcas
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
@@ -67,26 +68,22 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 # Install NodeJS
 curl -sL install-node.now.sh/lts | bash
 
+# install remove neovim
+pip3 install neovim-remote
+
 
 # Install zsh
 brew install zsh
 sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
 sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/esh
-brew install zsh-completions
-
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-ZSH=/Users/SagenOS/.oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
 # Install zsh syntax highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 # Install zsh autocomplete / suggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -132,4 +129,10 @@ rm iTerm2-3_2_7*
 spctl --add /Applications/iTerm.app/
 nohup open /Applications/iTerm.app/ &>/dev/null &
 
+
+
+# Add my configs to nvim 
+cp .config/nvim/init.vim ~/.config/nvim/
+cp .zshrc ~/
+cp .config/alacritty/alacritty.yml ~/.config/alacritty/
 

@@ -62,6 +62,10 @@
 (package! ein)         ;; jupyter notebook in emacs
 (package! realgud)     ;; python debugger
 
+(package! company-tabnine
+  :recipe (:host github :repo "TommyX12/company-tabnine"))
+
+
 ;; Java
 (package! company-emoji)
 (package! company-lsp)
