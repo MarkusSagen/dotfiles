@@ -50,8 +50,10 @@
 ;(unpin! t)
 
 
-
+;; UI
 (package! ascii-art-to-unicode)
+(package! rainbow-mode)
+
 (package! deadgrep)
 (package! emojify)
 

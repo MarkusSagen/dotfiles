@@ -1,22 +1,8 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-;;
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
 ;;
 ;; highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
@@ -27,9 +13,15 @@
 (setq user-full-name "Markus Sagen"
       user-mail-address "Markus.John.Sagen@gmail.com")
 
-(setq doom-theme 'doom-one)
+
+;; (setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-vibrant)
 (setq display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;(define-globalized-minor-mode global-rainbow-mode rainbow-mode (lambda () (rainbow-mode 1)))
+;(global-rainbow-mode 1)
+
 
 ;; Enable searches across all open windows, not just current one
 (setq avy-all-windows t)
@@ -64,20 +56,51 @@
 ;; TODO - make tabnine not run constantly
 ;;
 ;; Tabnine python autocomplete
-;; (use-package! company-tabnine :ensure t)
-;; (use-package company-tabnine
-;;   :ensure t
-;;   :when (featurep! :completion company)
-;;   :after prog-mode
-;;   ;;:config
-;;   :init
-;;   (add-hook 'prog-mode-hook #'(set-company-backend! 'prog-mode '(company-tabnine company-yasnippet company-dabbrev))))
-;; (add-to-list 'company-backends 'company-tabnine)
+(use-package! company-tabnine :ensure t)
+(use-package company-tabnine
+  :ensure t
+  :when (featurep! :completion company)
+  :after prog-mode
+  ;;:config
+  :init
+  (add-hook 'prog-mode-hook #'(set-company-backend! 'prog-mode '(company-tabnine company-yasnippet company-dabbrev))))
+(add-to-list 'company-backends 'company-tabnine)
 
 ;; Number the candidates (use M-1, M-2 etc to select completions).
-;; (setq company-show-numbers t)
-;; (with-eval-after-load 'company
-;;    (define-key company-active-map (kbd "C-SPC") #'company-tabnine))
+(setq company-show-numbers t)
+(with-eval-after-load 'company
+   (define-key company-active-map (kbd "C-SPC") #'company-tabnine))
+
+;; '(:settings
+;;     ('python-auto-format-code t))
+
+;;   '((:mode-local python-mode)
+
+;;     (:settings
+;;      ((:macro set-indent) 4)
+;;      ('python-indent 4)
+;;      ('python-indent-offset 4)
+;;      ((:require yasnippet)
+;;       ('yas-indent-line 'auto))
+;;      ((:require elpy)
+;;       ('elpy-rpc-timeout 2.5)))
+
+;;     (:minor-modes
+;;      ;; Note: elpy is automatically enabled.
+;;      ((:require flycheck)
+;;       (flycheck-mode -1)))
+
+;;     (:on-before-save
+;;      ((:require elpy)
+;;       (python-format-code)))
+
+;;     ((:mode-local elpy-mode)
+
+;;      (:settings
+;;       ((:require company)
+;;        ('company-idle-delay 0)
+;;        ((:require company-tabnine)
+;;         ('company-backends :ensure-front 'company-tabnine))))))
 
 
 
@@ -817,6 +840,17 @@ nothing happens."
 (require 'ox-extra)
 (ox-extras-activate '(latex-header-blocks ignore-headlines))
 
+;; Make Tramp fast when used with projectile
+(after! tramp
+  :config
+  (setq recentf-auto-cleanup 'never)
+  (setq projectile-mode-line "Projectile")
+  (setq tramp-completion-reread-directory-timeout nil)
+  (setq tramp-verbose 1)
+  (setq vc-ignore-dir-regexp
+        (format "\\(%s\\)\\|\\(%s\\)"
+                vc-ignore-dir-regexp
+                tramp-file-name-regexp)))
 
 
 
@@ -887,3 +921,5 @@ nothing happens."
 )
     (use-package htmlize
     :ensure t)
+
+(setq doom-line-numbers-style 'relative)
