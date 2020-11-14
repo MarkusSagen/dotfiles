@@ -6,6 +6,38 @@
 git clone https://github.com/samoshkin/tmux-config.git ~/
 ~/tmux-config/install.sh
 
+## install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#zsh
+
+## zsh witout root access
+#export SHELL=bin/zsh
+#exec /bin/zsh -l
+
+
+# Add these settings
+#echo "# For remote shell access
+#if [[ "$TERM" == "dumb" ]]; then
+#  unset zle_bracketed_paste
+#  unset zle
+#  PS1='$ '
+#  return
+#fi" >> .zshrc
+#echo "# Completion and suggest commands when typing
+#plugins=(git zsh-completions zsh-syntax-highlighting zsh-autosuggestions)" >> .zshrc
+#echo "# Load shell changes
+#source $ZSH/oh-my-zsh.sh" >> .zshrc
+
+## Set zsh as default shell when logging back in
+#echo "export SHELL=bin/zsh" >> .bashrc
+#echo "exec /bin/zsh -l" >> .bashrc
+## Reload and apply the settings
+#source .zshrc
+#source .bashrc
+
+
+
+
 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
