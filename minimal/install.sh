@@ -7,7 +7,7 @@ git clone https://github.com/samoshkin/tmux-config.git ~/
 ~/tmux-config/install.sh
 
 ## install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #zsh
 
 ## zsh witout root access
@@ -54,7 +54,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-cmod u+x nvim.appimage
+chmod u+x nvim.appimage
 ./nvim.appimage
 
 # Doom emacs
