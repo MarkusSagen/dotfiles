@@ -1,0 +1,52 @@
+#+TITLE: Mac Setup
+
+For default config
+
+* Mac keybindings and UI
+*Disable Spotlight*
+System Preferences > Keyboard > Shortcuts > Spotlight > Disable
+
+*Alfred configs*
+Alfred > General > Alfred Hotkey > "CMD + SPC"
+Alfred> Apperance > Alfred macOS Dark
+
+*Dark Mode*
+System Preferences > General > Dark
+
+*Darkmode in browser*
+https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh
+
+*Jupyter Lab Settings*
+Settings > JupyterLab Themes > JupyterLab Dark
+
+*Emacs*
+
+*NVIM*
+
+*TabNine*
+
+*Brave Browser*
+
+*Dropbox*
+
+*Zotero*
+
+*Better BibTex*
+
+*Amethyst*
+
+*iTERM2*
+
+*Pretunl*
+
+*Muzzle*
+
+*Toggl*
+[[https://toggl-open-source.github.io/toggldesktop/download/macos-stable/][Download Link]]
+
+*Toggl Tracker*
+Apple Store
+
+*Affinity Photo*
+
+*Affinity Designer*

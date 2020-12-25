@@ -49,30 +49,26 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-
 ;; UI
 (package! ascii-art-to-unicode)
 (package! rainbow-mode)
-
+(package! command-log-mode)  ;; global-command-log-mode, clm/open-command-log-buffer
 (package! deadgrep)
-(package! emojify)
-
 
 ;; Python
 (package! conda)
 (package! company-box) ;; completion for anaconda
-(package! ein)         ;; jupyter notebook in emacs
+(package! company-quickhelp)
 (package! realgud)     ;; python debugger
-
 (package! company-tabnine
   :recipe (:host github :repo "TommyX12/company-tabnine"))
-
+(package! lsp-jedi)
 
 ;; Java
-;;(package! company-emoji)
 (package! company-lsp)
 (package! dap-mode)
 (package! idle-highlight)
+(package! eglot)
 
 ;; org and Latex
 (package! org-pdftools
@@ -80,12 +76,17 @@
 (package! org-pdfview
   :recipe (:host github :repo "markus1189/org-pdfview"))
 
+;; TODO
+(package! mixed-pitch)
+(package! restclient)
+(package! company-posframe)
 
 ;; Org
 (package! org-bullets)
-(package! org-journal)
 (package! org-fancy-priorities)
 (package! org-super-agenda)
+(package! doom-todo-ivy        ;; Search all todo, fixme or other with ex: `:todo`
+  :recipe (:host github :repo "jsmestad/doom-todo-ivy"))
 (package! ov-highlight
   :recipe (:host github :repo "jkitchin/ov-highlight"))
 
@@ -94,12 +95,10 @@
 (package! ox-reveal)
 (package! htmlize)
 
-
 ;; Org-Roam
 (package! emacsql-sqlite3)
 (package! org-brain)
 (package! org-download)
-(package! org-drill)         ;; spaced repetition
 (package! org-ref
   :recipe (:host github :repo "jkitchin/org-ref"))
 (package! org-roam
@@ -110,4 +109,3 @@
     :recipe (:host github :repo "org-roam/org-roam-server"))
 (package! company-org-roam
   :recipe (:host github :repo "jethrokuan/company-org-roam"))
-

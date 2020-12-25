@@ -34,6 +34,8 @@ alias fix='
 cp ~/.doom.d/* ~/dotfiles/.doom.d/
 cp ~/.zshrc ~/dotfiles/wsl/
 '
+# Make java file structure
+alias mkjavadir="mkdir -p src/{main/{java,resources,filters,assembly,config,webapp},test/{java,resources,filters},site}"
 
 # Run CLI emacs
 alias eme='

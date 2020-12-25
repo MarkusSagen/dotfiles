@@ -1,0 +1,42 @@
+#+TITLE: Testing Org-Babel as a Config
+
+* Org-Babel
+
+Execute code blocks with C-c C-c
+
+To add support for a given language:
+asd
+
+
+#+begin_src emacs-lisp
+;; Add python support to org-babel
+(org-babel-do-load-languages
+ 'org-babel-do-load-languages
+ '((emacs-lisp .t)
+   (python . t)
+   (javascript .t)))
+
+(setq org-confirm-babel-evaluate nil)
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :results output
+print("hello")
+#+end_src
+
+#+RESULTS:
+: hello
+
+
+* Changing the org roam buffer width
+#+begin_src emacs-lisp
+(use-package org-roam
+  :after org
+  :ensure t
+  :config
+  (setq org-roam-buffer--set-width 0.15))
+#+end_src
+
+#+RESULTS:
+: t

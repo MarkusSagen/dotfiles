@@ -1,6 +1,6 @@
 # Install on Mac
 
-
+# TODO: Update and sync between dotfiles
 ###################################
 # When done, make sure to install 
 #    python3.7 and update all packages
@@ -11,34 +11,61 @@
 #   Make sure to add those paths to .config/nvim/init.vim
 
 # Install Homebrew
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # search files and directories
-brew install git ripgrep
 brew install ack
 brew install coreutils fd
 xcode-select --install
 brew install python3
+brew install cmake
 brew install git
 brew install node
 brew install vim
 brew install neovim
 brew install httpie
-brew install fzy 									# Other fuzzy finder
-brew install tmuxinator 					# Other terminal
-brew install the_silver_searcher 	# Fast search with 'ag'
-brew install fzf 									# Fuzzy finder, type '**<TAB>' or just <TAB> to search
-brew install ripgrep
+brew install fzy 					    # Other fuzzy finder
+brew install tmuxinator 	            # Other terminal
+brew install fzf 					    # Fuzzy finder, type '**<TAB>' or just <TAB> to search
+brew install rg
 brew install cmake
 brew install cask mactex
+brew install wkhtmltopdf
+brew cask install amethyst              # window manager
+brew install wget
+brew install go
+brew install direnv                     # Work with different shells on different projects
 
 # remote access to filesystems and list filesystem (NeoTree)
 brew cask install osxfuse
-brew install sshfs
+
+# mu4e Mail
+brew install mu
+# And one of the following
+brew install isync  # mbsync
+brew install offlineimap
+
+# install python language server for Doom emacs
+# Python
+pip install pytest
+pip install nose
+pip install black
+pip install pyflakes
+pip install isort
+pip install python-language-server
+pip install pyright
+
+
+# Doom emacs pre-requisites
+brew install emacs-mac --with-modules
+brew install libvterm
+
+
+
+
 
 # Install Doom Emacs
 # https://github.com/hlissner/doom-emacs/blob/develop/docs/getting_started.org#emacs--dependencies
-# Pre-requisites
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
@@ -116,7 +143,6 @@ curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-MacOSX-x86_64.pkg
 sudo installer -pkg Anaconda3-2020.02-MacOSX-x86_64.pkg -target /
 
 
-
 # Install Java TODO
 
 
@@ -129,10 +155,11 @@ rm iTerm2-3_2_7*
 spctl --add /Applications/iTerm.app/
 nohup open /Applications/iTerm.app/ &>/dev/null &
 
-
-
 # Add my configs to nvim 
 cp .config/nvim/init.vim ~/.config/nvim/
 cp .zshrc ~/
 cp .config/alacritty/alacritty.yml ~/.config/alacritty/
 
+# Install Toggl
+# -O specify filename and path, -P specify path only, 
+wget https://toggl-open-source.github.io/toggldesktop/download/macos-stable/ -P ~/Downloads
