@@ -1,0 +1,143 @@
+{
+   "addToFeed": {
+      "message": "Dodać do kanału"
+   },
+   "appDesc": {
+      "message": "Skuteczne rozszerzenie przeglądarki z naturalnie brzmiącym głosem pozwala na słuchanie tekstów na stronach internetowych."
+   },
+   "availableTime": {
+      "message": "Pozostały czas czytania: "
+   },
+   "breathing": {
+      "message": "Oddechowy"
+   },
+   "browserPage": {
+      "message": "Nie można słuchać stron przeglądarek."
+   },
+   "button_accountPage": {
+      "message": "Strona konta"
+   },
+   "button_cancel": {
+      "message": "ANULUJ"
+   },
+   "button_chat": {
+      "message": "Czat z pomocą techniczną"
+   },
+   "button_feedback": {
+      "message": "Przekaż feedback"
+   },
+   "button_guide": {
+      "message": "Podręcznik użytkownika (wideo)"
+   },
+   "button_help": {
+      "message": "Wsparcie"
+   },
+   "button_ideas": {
+      "message": "Prześlij pomysł"
+   },
+   "button_podcastEmail": {
+      "message": "E-mail link do podcastu"
+   },
+   "button_upgrade": {
+      "message": "UPGRADE PLAN"
+   },
+   "delete": {
+      "message": "Usunąć"
+   },
+   "languageNotSupported": {
+      "message": "Język strony nie jest obsługiwany :("
+   },
+   "languageOfTheUI": {
+      "message": "Język interfejsu"
+   },
+   "login": {
+      "message": "Zaloguj Się"
+   },
+   "logout": {
+      "message": "Wyloguj"
+   },
+   "msg_exhausted_body": {
+      "message": "Dziękuję, że jesteś z Intelligent Speaker!\n\nChcesz więcej czasu?\n\nZasubskrybuj, aby nadal słuchać swoich tekstów!"
+   },
+   "msg_exhausted_title": {
+      "message": "Wykorzystałeś cały dostępny czas na ten miesiąc."
+   },
+   "nextArticle": {
+      "message": "Następny artykuł"
+   },
+   "nextChunk": {
+      "message": "Szybko do przodu"
+   },
+   "noItems": {
+      "message": "Zacznij od dodania stron internetowych do kanału."
+   },
+   "placeholder_search": {
+      "message": "Szukaj"
+   },
+   "playPause": {
+      "message": "Odtwórz / wstrzymaj listę"
+   },
+   "playbackRate": {
+      "message": "Współczynnik odtwarzania"
+   },
+   "playbackRateDecrease": {
+      "message": "Playback rate: zmniejsz"
+   },
+   "playbackRateIncrease": {
+      "message": "Playback rate: zwiększenie"
+   },
+   "prevArticle": {
+      "message": "Poprzedni artykuł"
+   },
+   "prevChunk": {
+      "message": "Przewiń do tyłu"
+   },
+   "settings": {
+      "message": "Ustawienia"
+   },
+   "snackbar_addedToFeed": {
+      "message": "Dodano do kanału"
+   },
+   "snackbar_error_feedItemRemoving": {
+      "message": "Podczas usuwania błędu"
+   },
+   "snackbar_error_languageOfThePageIsUndefined": {
+      "message": "Język strony jest niezdefiniowany"
+   },
+   "snackbar_error_noTextHere": {
+      "message": "Brak tekstu na tej stronie. Napisz do nas, jeśli się nie zgadzasz"
+   },
+   "snackbar_error_podcastEmail": {
+      "message": "Błąd podczas wysyłania wiadomości e-mail z linkiem do podcastu :("
+   },
+   "snackbar_itemRemoved": {
+      "message": "Przedmiot usunięty"
+   },
+   "snackbar_podcastEmailSent": {
+      "message": "Wysłano wiadomość e-mail z linkiem do podcastu"
+   },
+   "storePage": {
+      "message": "Nie można słuchać stron przeglądarek."
+   },
+   "tooltip_addFile": {
+      "message": "Dodaj plik (txt, pdf, docx)"
+   },
+   "tooltip_addToFeed": {
+      "message": "Kliknij tutaj, aby zapisać tę stronę na swojej liście i słuchać jej później"
+   },
+   "tooltip_continuousPlaying": {
+      "message": "Kiedy nieskończoność: odtwarza wszystkie elementy kanału na liście, gdy 1: zatrzymuje odtwarzanie po jednym tekście"
+   },
+   "tooltip_download": {
+      "message": "Ściągnij audio"
+   },
+   "tooltip_download_caching": {
+      "message": "Nadal buforowanie dźwięku, proszę czekać..."
+   },
+   "voiceConfig": {
+      "message": "Default voice configuration"
+   },
+   "voiceConfigTooltip": {
+      "message": "Każdy język ma domyślny głos. Wybierz wiele głosów, a aplikacja losowo wybierze jeden"
+   }
+}

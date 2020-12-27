@@ -1,0 +1,143 @@
+{
+   "addToFeed": {
+      "message": "Toevoegen aan feed"
+   },
+   "appDesc": {
+      "message": "Effectieve browserextensie met natuurlijk klinkende stem stelt u in staat teksten op websites te beluisteren."
+   },
+   "availableTime": {
+      "message": "Leestijd over: "
+   },
+   "breathing": {
+      "message": "Ademen"
+   },
+   "browserPage": {
+      "message": "Onmogelijk om naar browserspagina's te luisteren."
+   },
+   "button_accountPage": {
+      "message": "Accountpagina"
+   },
+   "button_cancel": {
+      "message": "ANNULEER"
+   },
+   "button_chat": {
+      "message": "Chat met ondersteuning"
+   },
+   "button_feedback": {
+      "message": "Geef feedback"
+   },
+   "button_guide": {
+      "message": "Gebruikersgids (video)"
+   },
+   "button_help": {
+      "message": "Helpen"
+   },
+   "button_ideas": {
+      "message": "Stuur een idee in"
+   },
+   "button_podcastEmail": {
+      "message": "E-mailpodcast-link"
+   },
+   "button_upgrade": {
+      "message": "UPGRADE PLAN"
+   },
+   "delete": {
+      "message": "Verwijderen"
+   },
+   "languageNotSupported": {
+      "message": "Taal van de pagina wordt niet ondersteund :("
+   },
+   "languageOfTheUI": {
+      "message": "Taal van de interface"
+   },
+   "login": {
+      "message": "LOGIN"
+   },
+   "logout": {
+      "message": "Uitloggen"
+   },
+   "msg_exhausted_body": {
+      "message": "Bedankt dat je bij Intelligent Speaker bent!\n\nWil je meer tijd??\n\nAbonneer je om door te gaan met het luisteren naar je teksten!"
+   },
+   "msg_exhausted_title": {
+      "message": "U hebt alle beschikbare tijd voor deze maand gebruikt."
+   },
+   "nextArticle": {
+      "message": "Volgend artikel"
+   },
+   "nextChunk": {
+      "message": "Snel vooruit"
+   },
+   "noItems": {
+      "message": "Begin met het toevoegen van webpagina's aan de feed."
+   },
+   "placeholder_search": {
+      "message": "Zoeken"
+   },
+   "playPause": {
+      "message": "Speel / pauzeer de lijst"
+   },
+   "playbackRate": {
+      "message": "Afspeelsnelheid"
+   },
+   "playbackRateDecrease": {
+      "message": "Playback rate: verlagen"
+   },
+   "playbackRateIncrease": {
+      "message": "Playback rate: verhogen"
+   },
+   "prevArticle": {
+      "message": "Vorig artikel"
+   },
+   "prevChunk": {
+      "message": "Terugspoelen"
+   },
+   "settings": {
+      "message": "Instellingen"
+   },
+   "snackbar_addedToFeed": {
+      "message": "Toegevoegd aan feed"
+   },
+   "snackbar_error_feedItemRemoving": {
+      "message": "Fout bij verwijderen"
+   },
+   "snackbar_error_languageOfThePageIsUndefined": {
+      "message": "Taal van de pagina is niet gedefinieerd"
+   },
+   "snackbar_error_noTextHere": {
+      "message": "Geen tekst op deze pagina. Schrijf ons als u het niet eens bent"
+   },
+   "snackbar_error_podcastEmail": {
+      "message": "Fout bij het verzenden van e-mail met podcast-link :("
+   },
+   "snackbar_itemRemoved": {
+      "message": "Item verwijderd"
+   },
+   "snackbar_podcastEmailSent": {
+      "message": "E-mail met podcast-link verzonden"
+   },
+   "storePage": {
+      "message": "Onmogelijk om te luisteren naar de pagina's op de extensiepagina."
+   },
+   "tooltip_addFile": {
+      "message": "Bestand toevoegen (txt, pdf, docx)"
+   },
+   "tooltip_addToFeed": {
+      "message": "Klik hier om deze pagina op te slaan in uw lijst en later te beluisteren"
+   },
+   "tooltip_continuousPlaying": {
+      "message": "When infinity: speelt alle feeditems in uw lijst af, wanneer 1: stopt met spelen na één tekst"
+   },
+   "tooltip_download": {
+      "message": "Audio downloaden"
+   },
+   "tooltip_download_caching": {
+      "message": "Snog steeds cachegeheugen, wacht alstublieft..."
+   },
+   "voiceConfig": {
+      "message": "Default voice configuration"
+   },
+   "voiceConfigTooltip": {
+      "message": "Elke taal heeft een standaardstem. Selecteer meerdere stemmen en de app kiest er willekeurig een"
+   }
+}

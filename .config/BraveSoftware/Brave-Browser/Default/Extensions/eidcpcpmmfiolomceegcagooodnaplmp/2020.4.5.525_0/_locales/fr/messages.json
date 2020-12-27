@@ -1,0 +1,143 @@
+{
+   "addToFeed": {
+      "message": "Ajouter au feed"
+   },
+   "appDesc": {
+      "message": "Une extension de navigateur efficace avec une voix naturelle vous permet d'écouter des textes sur des sites Web."
+   },
+   "availableTime": {
+      "message": "Temps de lecture restant: "
+   },
+   "breathing": {
+      "message": "Respiration"
+   },
+   "browserPage": {
+      "message": "C'est impossible d'écouter des pages des navigateurs."
+   },
+   "button_accountPage": {
+      "message": "Page du compte"
+   },
+   "button_cancel": {
+      "message": "ANNULER"
+   },
+   "button_chat": {
+      "message": "Parler avec le support"
+   },
+   "button_feedback": {
+      "message": "Donner le feedback"
+   },
+   "button_guide": {
+      "message": "Guide de l'utilisateur (vidéo)"
+   },
+   "button_help": {
+      "message": "Aide"
+   },
+   "button_ideas": {
+      "message": "Soumettre une idée"
+   },
+   "button_podcastEmail": {
+      "message": "Lien de podcast par e-mail"
+   },
+   "button_upgrade": {
+      "message": "PLAN DE MISE À NIVEAU"
+   },
+   "delete": {
+      "message": "Effacer"
+   },
+   "languageNotSupported": {
+      "message": "La langue de la page n'est pas supportée :("
+   },
+   "languageOfTheUI": {
+      "message": "Langue de l'interface"
+   },
+   "login": {
+      "message": "LOGIN"
+   },
+   "logout": {
+      "message": "Logout"
+   },
+   "msg_exhausted_body": {
+      "message": "Merci d'être avec l'Intelligent Speaker!\n\nVoulez vous plus de temps??\n\nAbonnez-vous pour continuer à écouter vos textes!"
+   },
+   "msg_exhausted_title": {
+      "message": "Vous avez utilisé tout le temps disponible pour ce mois."
+   },
+   "nextArticle": {
+      "message": "Article suivant"
+   },
+   "nextChunk": {
+      "message": "Avance rapide"
+   },
+   "noItems": {
+      "message": "Commencez par ajouter des pages Web au flux."
+   },
+   "placeholder_search": {
+      "message": "Recherche"
+   },
+   "playPause": {
+      "message": "Play/Pause la liste"
+   },
+   "playbackRate": {
+      "message": "Playback"
+   },
+   "playbackRateDecrease": {
+      "message": "Playback rate:  diminution"
+   },
+   "playbackRateIncrease": {
+      "message": "Playback rate: augmentation"
+   },
+   "prevArticle": {
+      "message": "Article précédent"
+   },
+   "prevChunk": {
+      "message": "Rembobiner"
+   },
+   "settings": {
+      "message": "Paramètres"
+   },
+   "snackbar_addedToFeed": {
+      "message": "Ajouté au flux"
+   },
+   "snackbar_error_feedItemRemoving": {
+      "message": "Erreur de suppression"
+   },
+   "snackbar_error_languageOfThePageIsUndefined": {
+      "message": "Langue de la page n'est pas définie"
+   },
+   "snackbar_error_noTextHere": {
+      "message": "Pas de texte sur cette page. Écrivez-nous si vous n'êtes pas d'accord"
+   },
+   "snackbar_error_podcastEmail": {
+      "message": "Erreur lors de l'envoi d'un e-mail avec un lien de podcast :("
+   },
+   "snackbar_itemRemoved": {
+      "message": "Article est supprimé"
+   },
+   "snackbar_podcastEmailSent": {
+      "message": "E-mail avec un lien de podcast envoyé"
+   },
+   "storePage": {
+      "message": "C'est impossible d'écouter des pages des navigateurs."
+   },
+   "tooltip_addFile": {
+      "message": "Ajouter le fichier (txt, pdf, docx)"
+   },
+   "tooltip_addToFeed": {
+      "message": "Cliquez ici pour enregistrer cette page dans votre liste et l'écouter plus tard"
+   },
+   "tooltip_continuousPlaying": {
+      "message": "Lorsque infini: lit tous les éléments de flux dans votre liste, quand 1: arrête de jouer après un texte"
+   },
+   "tooltip_download": {
+      "message": "Télécharger l'audio"
+   },
+   "tooltip_download_caching": {
+      "message": "Toujours mettre en cache l'audio, s'il vous plaît attendre..."
+   },
+   "voiceConfig": {
+      "message": "Default voice configuration"
+   },
+   "voiceConfigTooltip": {
+      "message": "Chaque langue a une voix par défaut. Sélectionnez plusieurs voix et l'application en choisira une au hasard"
+   }
+}

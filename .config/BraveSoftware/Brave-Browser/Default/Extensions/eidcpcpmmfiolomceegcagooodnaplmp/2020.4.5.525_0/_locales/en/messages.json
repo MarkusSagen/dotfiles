@@ -1,0 +1,143 @@
+{
+   "addToFeed": {
+      "message": "Add to feed"
+   },
+   "appDesc": {
+      "message": "Intelligent Speaker: FREE smart reader, runs on leading tts engine. Convert files, blog posts & more to speech. Listen on any device"
+   },
+   "availableTime": {
+      "message": "Reading time left: "
+   },
+   "breathing": {
+      "message": "Breathing"
+   },
+   "browserPage": {
+      "message": "Impossible to listen to browsers pages."
+   },
+   "button_accountPage": {
+      "message": "Account"
+   },
+   "button_cancel": {
+      "message": "CANCEL"
+   },
+   "button_chat": {
+      "message": "Chat with Support"
+   },
+   "button_feedback": {
+      "message": "Give feedback"
+   },
+   "button_guide": {
+      "message": "User Guide (video)"
+   },
+   "button_help": {
+      "message": "Help"
+   },
+   "button_ideas": {
+      "message": "Submit an idea"
+   },
+   "button_podcastEmail": {
+      "message": "Email podcast link"
+   },
+   "button_upgrade": {
+      "message": "UPGRADE PLAN"
+   },
+   "delete": {
+      "message": "Delete"
+   },
+   "languageNotSupported": {
+      "message": "Language is not supported :("
+   },
+   "languageOfTheUI": {
+      "message": "Language of the interface"
+   },
+   "login": {
+      "message": "Login"
+   },
+   "logout": {
+      "message": "Logout"
+   },
+   "msg_exhausted_body": {
+      "message": "Thank you for being with Intelligent Speaker! Want more time? Subscribe to continue listening to your texts!"
+   },
+   "msg_exhausted_title": {
+      "message": "You have used all free time available for this month."
+   },
+   "nextArticle": {
+      "message": "Next article"
+   },
+   "nextChunk": {
+      "message": "Fast forward"
+   },
+   "noItems": {
+      "message": "Start by adding web-pages to the feed."
+   },
+   "placeholder_search": {
+      "message": "Search"
+   },
+   "playPause": {
+      "message": "Play/Pause the list"
+   },
+   "playbackRate": {
+      "message": "Playback rate"
+   },
+   "playbackRateDecrease": {
+      "message": "Playback rate: decrease"
+   },
+   "playbackRateIncrease": {
+      "message": "Playback rate: increase"
+   },
+   "prevArticle": {
+      "message": "Previous article"
+   },
+   "prevChunk": {
+      "message": "Rewind back"
+   },
+   "settings": {
+      "message": "Settings"
+   },
+   "snackbar_addedToFeed": {
+      "message": "Added to feed"
+   },
+   "snackbar_error_feedItemRemoving": {
+      "message": "Error removing"
+   },
+   "snackbar_error_languageOfThePageIsUndefined": {
+      "message": "Language of the page is undefined"
+   },
+   "snackbar_error_noTextHere": {
+      "message": "No text on this page. Write to us if you disagree"
+   },
+   "snackbar_error_podcastEmail": {
+      "message": "Error sending email with podcast link :("
+   },
+   "snackbar_itemRemoved": {
+      "message": "Item removed"
+   },
+   "snackbar_podcastEmailSent": {
+      "message": "Email with podcast link sent"
+   },
+   "storePage": {
+      "message": "Impossible to listen to extension store pages."
+   },
+   "tooltip_addFile": {
+      "message": "Add file (txt, pdf, docx)"
+   },
+   "tooltip_addToFeed": {
+      "message": "Click here to save this page to your list and listen to it later"
+   },
+   "tooltip_continuousPlaying": {
+      "message": "When infinity: plays all the feed items in your list, when 1: stops playing after one text"
+   },
+   "tooltip_download": {
+      "message": "Download audio"
+   },
+   "tooltip_download_caching": {
+      "message": "Still caching audio, please wait..."
+   },
+   "voiceConfig": {
+      "message": "Default voice configuration"
+   },
+   "voiceConfigTooltip": {
+      "message": "Every language has a default voice. Select multiple voices and the app'll randomly pick one"
+   }
+}

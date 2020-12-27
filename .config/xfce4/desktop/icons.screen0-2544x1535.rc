@@ -1,0 +1,15 @@
+[xfdesktop-version-4.10.3+-rcfile_format]
+4.10.3+=true
+
+[Trash]
+row=12
+col=0
+
+[/]
+row=11
+col=0
+
+[/home/sagenos]
+row=10
+col=0
+

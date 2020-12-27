@@ -1,0 +1,57 @@
+{
+   "author": "Additor Team \u003Cdev@additor.io>",
+   "background": {
+      "page": "./html/backgroundPage.html",
+      "persistent": true
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "images/icons/app_icon_16.png",
+         "24": "images/icons/app_icon_24.png",
+         "32": "images/icons/app_icon_32.png"
+      },
+      "default_title": "Additor"
+   },
+   "commands": {
+      "CREATE_CARD": {
+         "description": "Save this page",
+         "suggested_key": {
+            "default": "Ctrl+Shift+S",
+            "mac": "Command+Shift+S"
+         }
+      },
+      "SWITCH_HIGHLIGHT_MODE": {
+         "description": "Turn on/off highlighter",
+         "suggested_key": {
+            "default": "Ctrl+Shift+U",
+            "mac": "Command+Shift+U"
+         }
+      }
+   },
+   "content_scripts": [ {
+      "css": [ "./styles/OpenSans.Fonts.css", "./styles/initialize.css", "./build/contentScript.css" ],
+      "exclude_globs": [ "*://*.additor.io/*", "*://*.betamon.xyz/*", "*://*.alphamon.xyz/*", "*://localhost/*" ],
+      "js": [ "./build/contentScript.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google-analytics.com; object-src 'self';",
+   "description": "Additor helps you to organize bookmarks and highlights from article, blog, PDF, and etc into notes.",
+   "externally_connectable": {
+      "matches": [ "*://*.alphamon.xyz/*", "*://*.betamon.xyz/*", "*://*.additor.io/*" ]
+   },
+   "homepage_url": "https://chrome.google.com/webstore/detail/additor-bookmarkhighlight/hfllajanfnlimffhkjbondolipoimcgn",
+   "icons": {
+      "128": "images/icons/app_icon_128.png",
+      "16": "images/icons/app_icon_16.png",
+      "48": "images/icons/app_icon_48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxqhi0bJ3eBD+Qs8318o4xUUrvhAKcH2ofnppJWk8bYJlM3Izs8RINfznT4XgGGYay0o81ZNaUXIVKtGt4EkhWGKarn0j1dGgOsIMdRlmoXjSTTPUvZzZg41gXbLdylb71X59ca/NBc6UD8UoLubcvtKP++6/p+S/pWKmrfP4cm6uVsLd88KKb36g0WKaF9dELU/8LT4bai26UnK9nAZT2hO7FqqMOs02QrBKVXIswqJCebhf46Zi4yWhErrsWc1GGtlijHtCi/xYgQoDL8lAiKAbi3f22zIkCv2xma0xqmoXRk8mGvbZy1daCjssOMXF6hl4f6RCJs12GdaESY00swIDAQAB",
+   "manifest_version": 2,
+   "name": "Additor - Highlight & organize into notes",
+   "permissions": [ "cookies", "contextMenus", "tabs", "storage", "\u003Call_urls>" ],
+   "short_name": "Additor",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.1.9",
+   "web_accessible_resources": [ "build/*", "images/*", "js/*", "styles/*", "fonts/*", "pdf/*", "html/*", "videos/*" ]
+}

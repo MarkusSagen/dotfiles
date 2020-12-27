@@ -1,0 +1,1 @@
+/home/sagenos/.fzf/shell/key-bindings.fish

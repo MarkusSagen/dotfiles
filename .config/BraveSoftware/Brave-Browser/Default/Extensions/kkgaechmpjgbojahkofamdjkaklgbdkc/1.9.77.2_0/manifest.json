@@ -1,0 +1,48 @@
+{
+   "background": {
+      "scripts": [ "scripts/vendors-background-content-popup.js", "scripts/vendors-background.js", "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "icons/browser-icon-128.png",
+         "16": "icons/browser-icon-16.png",
+         "24": "icons/browser-icon-24.png",
+         "256": "icons/browser-icon-256.png",
+         "32": "icons/browser-icon-32.png",
+         "48": "icons/browser-icon-48.png",
+         "64": "icons/browser-icon-64.png"
+      },
+      "default_popup": "html/browser-popup.html",
+      "default_title": "__MSG_appName__"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "exclude_matches": [ "https://trello.com/1/*" ],
+      "js": [ "scripts/vendors-background-content-popup.js", "scripts/vendors-content-popup.js", "scripts/html-styles-content-popup.js", "scripts/vendors-content.js", "scripts/html-styles-content.js", "scripts/content.js" ],
+      "matches": [ "https://trello.com/*", "https://planyway.com/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'self'; object-src 'self';",
+   "default_locale": "en",
+   "description": "__MSG_appDescription__",
+   "externally_connectable": {
+      "matches": [ "https://planyway.com/*" ]
+   },
+   "icons": {
+      "128": "icons/browser-icon-128.png",
+      "16": "icons/browser-icon-16.png",
+      "24": "icons/browser-icon-24.png",
+      "256": "icons/browser-icon-256.png",
+      "32": "icons/browser-icon-32.png",
+      "48": "icons/browser-icon-48.png",
+      "64": "icons/browser-icon-64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlBaUhMKVdPYj/2u4OTDJ5+kjd20bpGtJz8DgL1m9FlZyg7KGPusW/m8f2lijXgF4uOqRB9GirQDRsrBEh3j0VVM81e9AlWpslfdAcQOJUoZO8hq4uLefffQq81WqXNg0xZ9HfYqEVjXm9eDO56QKC9Qah78yIqrcUsZe643PJvXWmfjX5LSIs2VJQlx88typjVvHp/JNE8Yq1TJRgs2oq07/DwfV4dws6D+noXB5/3M+jCcT2DrQOSHDd0TADT50KX6/wFrcaoSutXBKf4n4hYQ9o29zhjvOtZiDR08J1Tn1SadwEED6Vk1ICWMcfneDNRB5rz7Wv3hwhPdbQCcrZQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "permissions": [ "https://trello.com/*", "https://planyway.com/*" ],
+   "short_name": "Planyway for Trello",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.9.77.2",
+   "web_accessible_resources": [ "images/*" ]
+}

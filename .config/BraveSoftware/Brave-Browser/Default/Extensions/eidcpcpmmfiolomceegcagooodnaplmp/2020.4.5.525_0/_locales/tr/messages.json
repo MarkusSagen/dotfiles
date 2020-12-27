@@ -1,0 +1,143 @@
+{
+   "addToFeed": {
+      "message": "Eklemek için feed"
+   },
+   "appDesc": {
+      "message": "Doğal ses sesi ile efektif tarayıcı eklentisi, web sitelerindeki metinleri dinlemenizi sağlar"
+   },
+   "availableTime": {
+      "message": "Okuma saati kaldı: "
+   },
+   "breathing": {
+      "message": "Nefes"
+   },
+   "browserPage": {
+      "message": "Tarayıcılar sayfalarını dinlemek imkansız."
+   },
+   "button_accountPage": {
+      "message": "Hesap Sayfası"
+   },
+   "button_cancel": {
+      "message": "İPTAL ETMEK"
+   },
+   "button_chat": {
+      "message": "Destek ile sohbet et"
+   },
+   "button_feedback": {
+      "message": "Feedback vermek"
+   },
+   "button_guide": {
+      "message": "Kullanım Kılavuzu (video)"
+   },
+   "button_help": {
+      "message": "Yardım et"
+   },
+   "button_ideas": {
+      "message": "Bir fikir göndermek"
+   },
+   "button_podcastEmail": {
+      "message": "E-posta podcast bağlantısı"
+   },
+   "button_upgrade": {
+      "message": "YÜKSELTME PLANI"
+   },
+   "delete": {
+      "message": "Silmek"
+   },
+   "languageNotSupported": {
+      "message": "O idioma da página não é suportado :("
+   },
+   "languageOfTheUI": {
+      "message": "Arayüzün dili"
+   },
+   "login": {
+      "message": "Oturum aç"
+   },
+   "logout": {
+      "message": "Çıkış yap"
+   },
+   "msg_exhausted_body": {
+      "message": "Birlikte olduğun için Intelligent Speaker teşekkür ederim!\n\nDaha fazla zaman ister misin?\n\nMetinlerinizi dinlemeye devam etmek için abone olun!"
+   },
+   "msg_exhausted_title": {
+      "message": "Bu ay için tüm zamanı kullandınız."
+   },
+   "nextArticle": {
+      "message": "Bir sonraki makale"
+   },
+   "nextChunk": {
+      "message": "Hızlı ileri"
+   },
+   "noItems": {
+      "message": "Web sayfalarını beslemeye ekleyerek başlayın."
+   },
+   "placeholder_search": {
+      "message": "Arama"
+   },
+   "playPause": {
+      "message": "Listeyi oynat / durakla"
+   },
+   "playbackRate": {
+      "message": "Çalma oranı"
+   },
+   "playbackRateDecrease": {
+      "message": "Playback rate: azaltma"
+   },
+   "playbackRateIncrease": {
+      "message": "Playback rate: artış"
+   },
+   "prevArticle": {
+      "message": "önceki makale"
+   },
+   "prevChunk": {
+      "message": "Geri sar"
+   },
+   "settings": {
+      "message": "Ayarlar"
+   },
+   "snackbar_addedToFeed": {
+      "message": "Besleme eklendi"
+   },
+   "snackbar_error_feedItemRemoving": {
+      "message": "Hata kaldırılıyor"
+   },
+   "snackbar_error_languageOfThePageIsUndefined": {
+      "message": "Sayfanın dili tanımlanmadı"
+   },
+   "snackbar_error_noTextHere": {
+      "message": "Bu sayfada metin yok. Kabul etmezseniz bize yazın"
+   },
+   "snackbar_error_podcastEmail": {
+      "message": "Podcast bağlantısı ile e-posta gönderirken hata oluştu :("
+   },
+   "snackbar_itemRemoved": {
+      "message": "Öğe kaldırıldı"
+   },
+   "snackbar_podcastEmailSent": {
+      "message": "Podcast bağlantısıyla e-posta gönderildi"
+   },
+   "storePage": {
+      "message": "Uzantı mağaza sayfalarını dinlemek imkansız."
+   },
+   "tooltip_addFile": {
+      "message": "Dosya ekle (txt, pdf, docx)"
+   },
+   "tooltip_addToFeed": {
+      "message": "Bu sayfayı listenize kaydetmek ve daha sonra dinlemek için burayı tıklayın"
+   },
+   "tooltip_continuousPlaying": {
+      "message": "Sonsuzluk: listedeki tüm yayın öğelerini çalar; zaman 1: bir metin sonrasında oynatmayı durdurur"
+   },
+   "tooltip_download": {
+      "message": "Ses indir"
+   },
+   "tooltip_download_caching": {
+      "message": "Hala önbelleğe alma sesi, lütfen bekleyin..."
+   },
+   "voiceConfig": {
+      "message": "Default voice configuration"
+   },
+   "voiceConfigTooltip": {
+      "message": "Her dilin varsayılan sesi vardır. Birden fazla ses seçin, uygulama rastgele birini seçecek"
+   }
+}
