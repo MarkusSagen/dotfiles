@@ -72,6 +72,8 @@
 (package! dap-mode)
 (package! idle-highlight)
 
+;; Evil
+(package! evil-escape)
 
 ;; Org
 (package! org-bullets)
@@ -80,7 +82,7 @@
 (package! org-super-agenda)
 
 
-;; Org-Roam
+;; Org-roam and learning
 (package! emacsql-sqlite3)
 (package! org-brain)
 (package! org-download)
